@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logoImage from "../assets/images/logo.png";
 import menuSvg from "../assets/images/menu.svg";
+import closeSvg from "../assets/images/x.svg";
 import Button from "./Button";
 import { links } from "../assets/data/data.js";
 
@@ -15,16 +16,15 @@ const Header = () => {
           </div>
 
           {/* mobile */}
-          <div className="md:hidden text-black cursor-pointer">
-            <img
-              src={menuSvg}
-              alt=""
-              className="h-7 w-7"
-              onClick={(pre) => {
-                console.log("mohan the don");
-                setOpenNav(!pre);
-              }}
-            />
+          <div
+            className="md:hidden text-black cursor-pointer"
+            onClick={() => setOpenNav(!openNav)}
+          >
+            {openNav ? (
+              <img src={closeSvg} alt="" className="h-7 w-7" />
+            ) : (
+              <img src={menuSvg} alt="" className="h-7 w-7" />
+            )}
           </div>
 
           <div className=" md:flex justify-center items-center hidden">
@@ -42,17 +42,19 @@ const Header = () => {
         </div>
       </div>
       {openNav && (
-        <div className="absolute inset-0 z-50">
-          <div className="flex justify-center items-center bg-white">
-            <ul className="text-base flex space-x-8 h-full">
+         <div className="fixed inset-0 !top-16 bg-white z-50 py-20 px-40 space-y-8 md:hidden">
+          <div className="flex justify-center items-center">
+            <ul className="text-xl font-semibold flex space-y-5 flex-col ">
               {links.map((item) => (
-                <li className="h-full py-5 border-b-2 border-transparent cursor-pointer hover:border-[#E7613A] relative ">
+                <li className="border-b-2 border-transparent cursor-pointer hover:border-[#E7613A] relative ">
                   {item.title}
                 </li>
               ))}
             </ul>
           </div>
-          <Button>Get Pricing</Button>
+          <div className="flex justify-center items-center w-full">
+            <Button className={"w-full"}>Get Pricing</Button>
+          </div>
         </div>
       )}
     </>
