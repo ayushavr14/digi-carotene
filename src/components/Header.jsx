@@ -42,7 +42,7 @@ const Header = () => {
         </div>
       </div>
       {openNav && (
-         <div className="fixed inset-0 !top-16 bg-white z-50 py-20 px-40 space-y-8 md:hidden">
+         <div className="fixed inset-0 !top-16 bg-white z-50 p-20 space-y-8 md:hidden">
           <div className="flex justify-center items-center">
             <ul className="text-xl font-semibold flex space-y-5 flex-col ">
               {links.map((item) => (
@@ -53,7 +53,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="flex justify-center items-center w-full">
-            <Button className={"w-full"}>Get Pricing</Button>
+            <Button>Get Pricing</Button>
           </div>
         </div>
       )}
